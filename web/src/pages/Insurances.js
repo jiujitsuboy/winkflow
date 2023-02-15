@@ -45,7 +45,7 @@ const Insurances = () => {
       },
   ];
   return <>
-    <div className="centered">Insurance Page</div>
+    <div className="main_label">My Insurances</div>
     <div style={{display:"grid", gridTemplateColumns:"repeat(3, 1fr)", justifyItems:"center"}}>
         {insuraces.map(insurace => <Insurance insurace={insurace}/>)}
     </div>    

@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import Layout from "./components/Layout/Layout";
@@ -25,7 +24,19 @@ function App() {
           {/* <Route path="login" element={<Login auth={{isAuth, setIsAuth}}/>} /> */}
           <Route path="*" element={<NotFound/>}/>
       </Routes>
-      
+      {/* {isLoading && (
+        <div style={{ padding: "20px", backgroundColor: "yellow" }}>
+          Loading
+        </div>
+      )}
+      {isAuthenticated && (
+        <div style={{ padding: "20px", backgroundColor: "cyan" }}>
+          <img src={user.picture} alt={user.name} width="20px" />
+          {user.name}
+        </div>
+      )}
+      {!isAuthenticated && <button onClick={loginWithRedirect}>Login</button>}
+      {isAuthenticated && <button onClick={logout}>Logout</button>} */}
     </Layout>
   );
 }
