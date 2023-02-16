@@ -4,6 +4,10 @@ import classes from "./Insurance.module.css"
 const Insurance = ({ insurace }) => {
   const { name, logo, cost, capacity, images } = insurace;
 
+  const getQuoteHandler = ()=>{
+    alert(JSON.stringify({ name, logo, cost, capacity, images }))
+  }
+
   return (
     <div className={classes.container}>
       <div className={classes.header}>
@@ -30,7 +34,7 @@ const Insurance = ({ insurace }) => {
         <label>{capacity}</label>
       </div>
       <div className={classes.button_container}>
-        <button className={classes.button}>Get quote</button>
+        <button className={classes.button} onClick={getQuoteHandler}>Get quote</button>
       </div>
     </div>
   );

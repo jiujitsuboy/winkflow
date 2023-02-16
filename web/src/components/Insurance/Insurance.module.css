@@ -47,6 +47,15 @@
 .button {
     background-color: #0AB682; 
     color: white; 
+    border-radius: 40px;
+    padding:10px 90px;
+    font-size: 1.2rem;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color:white;
+    color:  #0AB682;
     border-radius: 40px; 
     padding:10px 90px;
     font-size: 1.2rem;

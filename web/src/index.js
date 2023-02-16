@@ -13,7 +13,8 @@ root.render(
       domain="dev-l1oihdzyxvar3nge.us.auth0.com"
       clientId="5ESOCkuSDGUVQwNSZl6MAZIHnN6qDmhb"
       authorizationParams={{
-        redirect_uri: window.location.origin,
+        // redirect_uri: window.location.origin,
+        redirect_uri:"http://localhost:3005/my-insurances"
       }}
       cacheLocation="localstorage"
     >

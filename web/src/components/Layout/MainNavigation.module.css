@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10%;
+    padding: 0 3rem 0 10rem;
   }
   
   .logo {
@@ -27,6 +27,11 @@
   .header li {
     margin: 0 1rem;
   }
+
+  .header nav {
+    display: flex;
+    align-items: baseline;
+  }
   
   .header a {
     text-decoration: none;
@@ -34,22 +39,52 @@
     font-weight: bold;
   }
   
-  .header button {
+  .header .login {
     font: inherit;
-    background-color: transparent;
+    background-color: #ffd200;
     border: 1px solid white;
-    color: white;
+    color: black;
     font-weight: bold;
-    padding: 0.5rem 1.5rem;
-    border-radius: 6px;
+    padding: 0.8rem 4rem;
+    margin: 0 8rem 0 6rem;
+    border-radius: 20px;
     cursor: pointer;
   }
   
+  .header .login:hover {
+    background-color: #00a35f;
+    color: #38015c;
+  }
+
+  .header .logout {
+    border: 0;
+    background-color: transparent;
+    color: white;
+    padding: 0;
+    margin: 0;
+  }
+
+  .header .logout:hover {
+    font-weight: bolder;
+    text-decoration: underline;
+  }
+
   .header a:hover {
     color: #00a35f;
   }
-  
-  .header button:hover {
-    background-color: #00a35f;
-    color: #38015c;
+
+  .user_profile {
+    display: flex;
+    align-items: center;
+    margin: 0 8rem 0 6rem;
+  }
+
+  .user_profile__picture {
+    border-radius: 50%;
+    margin-right: 1rem;
+    width: 40px;
+  }
+
+  .user_profile__name {
+    color: white;
   }
