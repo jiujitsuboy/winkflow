@@ -1,11 +1,14 @@
 import React from "react";
 import classes from "./Insurance.module.css"
+import {useNavigate} from "react-router-dom"
 
-const Insurance = ({ insurace }) => {
-  const { name, logo, cost, capacity, images } = insurace;
+const Insurance = ({ insurance }) => {
+  const navigate = useNavigate()
+  const { name, logo, cost, capacity, images } = insurance;
 
   const getQuoteHandler = ()=>{
     alert(JSON.stringify({ name, logo, cost, capacity, images }))
+    navigate("/insurances-details")
   }
 
   return (

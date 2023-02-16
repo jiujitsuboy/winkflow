@@ -1,6 +1,6 @@
 import React from "react";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
-import LoadingSpinner from "../UI/LoadingSpinner"
+import LoadingSpinner from "../ui/LoadingSpinner"
 
 const AuthenticationGuard = ({ component }) => {
   const Component = withAuthenticationRequired(component, {

@@ -20,8 +20,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    align-items: baseline;
+    display: flex;    
   }
   
   .header li {
@@ -30,7 +29,7 @@
 
   .header nav {
     display: flex;
-    align-items: baseline;
+    align-items: center;
   }
   
   .header a {
@@ -56,35 +55,6 @@
     color: #38015c;
   }
 
-  .header .logout {
-    border: 0;
-    background-color: transparent;
-    color: white;
-    padding: 0;
-    margin: 0;
-  }
-
-  .header .logout:hover {
-    font-weight: bolder;
-    text-decoration: underline;
-  }
-
   .header a:hover {
     color: #00a35f;
-  }
-
-  .user_profile {
-    display: flex;
-    align-items: center;
-    margin: 0 8rem 0 6rem;
-  }
-
-  .user_profile__picture {
-    border-radius: 50%;
-    margin-right: 1rem;
-    width: 40px;
-  }
-
-  .user_profile__name {
-    color: white;
   }
