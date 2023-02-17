@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Insurance from "../../components/insurance/Insurance";
 import { getInsurance } from "../../api/insurance";
 import LoadingSpinner from "../../components/ui/LoadingSpinner";
+import TermsAndContidionts from "../../components/terms/TermsAndContidionts";
 
 const defaultInsurance = {
   name: "",
@@ -214,36 +215,15 @@ const InsuranceDetails = () => {
                   </div>
                 </div>
               </div>
-              <div
-                style={{
-                  border: "1px solid #ccc",
-                  borderRadius: "1.3rem",
-                  padding: "1.5rem",
-                  margin: "10px",
-                }}
-              >
-                <label style={{ fontSize: "1.3rem", fontWeight: "bold" }}>
-                  Terms and conditions
-                </label>
-                <p style={{ textAlign: "justify" }}>Covered.</p>
-                <ul>
-                  <li>contract bugs</li>
-                  <li>economic attacks, including oracle failures</li>
-                  <li>governance attacks</li>
-                </ul>
-                <p style={{ textAlign: "justify" }}>Supported chains.</p>
-                <ul>
-                  <li>Ethereum</li>
-                </ul>
-                <p style={{ textAlign: "justify" }}>
-                  This cover is not a contract of insurance. Cover is provided
-                  on a discretionary basis with Nexus Mutual members having the
-                  final say on which claims are paid.
-                </p>
-              </div>
+              <TermsAndContidionts />
             </div>
             <div>
-              <Insurance insurance={insurance} isBuying={true} period={period} amount={amount} />
+              <Insurance
+                insurance={insurance}
+                isBuying={true}
+                period={period}
+                amount={amount}
+              />
             </div>
           </div>
         </>

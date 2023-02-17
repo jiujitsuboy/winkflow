@@ -7,7 +7,6 @@ import Insurances from "./pages/insurances/Insurances";
 import InsuranceDetails from "./pages/insurances/InsuranceDetails";
 import MyInsurances from "./pages/insurances/MyInsurances";
 import Faq from "./pages/faq/Faq";
-import TermsAndContidionts from "./pages/terms/TermsAndContidionts";
 import AuthenticationGuard from "./components/guard/AuthenticationGuard";
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
           <Route path="/insurances-details/:id" element={<InsuranceDetails/>}/>
           <Route path="/my-insurances" element={<AuthenticationGuard component={MyInsurances}></AuthenticationGuard>}/>
           <Route path="/faq" element={<Faq/>}/>
-          <Route path="/terms-and-conditions" element={<TermsAndContidionts/>}/>
           <Route path="*" element={<NotFound/>}/>
       </Routes>
     </Layout>

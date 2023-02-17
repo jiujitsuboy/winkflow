@@ -9,6 +9,16 @@
     font-weight: 500;
   }
   
+  .list_container {
+    display: flex;
+    justify-content: flex-start;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 5px 3px 5px #ccc;
+    width: 60rem;
+    margin: auto;
+}
+
   .section_container {
       display: flex;
       justify-content: flex-start;      
@@ -16,5 +26,5 @@
   }
   
   .section {    
-      margin: 4rem;
+      margin: 2rem;
   }

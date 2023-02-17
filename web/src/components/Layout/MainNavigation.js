@@ -49,12 +49,7 @@ const MainNavigation = () => {
             </li>
             <li>
               <Link to="/faq">faq</Link>
-            </li>
-            <li>
-              <Link to="/terms-and-conditions" alt="">
-                term & conditions
-              </Link>
-            </li>
+            </li>            
           </ul>
           {!isAuthenticated && (
             <button className={classes.login} onClick={loginWithRedirect}>
