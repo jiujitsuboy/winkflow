@@ -1,67 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Insurance from "../../components/insurance/Insurance";
+import { getInsurances } from "../../api/insurance";
+import LoadingSpinner from "../../components/ui/LoadingSpinner";
 
 const Insurances = () => {
-  const insurances = [
-    {
-      name: "Aura",
-      logo: "/aura.png",
-      cost: "2.60%",
-      capacity: "112 ETH/ 193.6k DAI",
-      images: [
-        {
-          url: "/arbitrum.svg",
-          name: "arbitrum",
-        },
-      ],
-    },
-    {
-      name: "Enzume v4",
-      logo: "/enzyme-v4.svg",
-      cost: "2.60%",
-      capacity: "112 ETH/ 193.6k DAI",
-      images: [
-        {
-          url: "/arbitrum.svg",
-          name: "arbitrum",
-        },
-        {
-          url: "/avalanche.svg",
-          name: "avalanche",
-        },
-      ],
-    },
-    {
-        name: "Gearbox V2",
-        logo: "/gearbox.png",
-        cost: "2.60%",
-        capacity: "112 ETH/ 193.6k DAI",
-        images: [
-          {
-            url: "/arbitrum.svg",
-            name: "arbitrum",
-          },
-        ],
-      },
-      {
-        name: "Gearbox V2",
-        logo: "/gearbox.png",
-        cost: "2.60%",
-        capacity: "112 ETH/ 193.6k DAI",
-        images: [
-          {
-            url: "/arbitrum.svg",
-            name: "arbitrum",
-          },
-        ],
-      },
-  ];
-  return <>
-    <div className="main_label">Available Insurances</div>
-    <div style={{display:"grid", gridTemplateColumns:"repeat(3, 1fr)", justifyItems:"center"}}>
-        {insurances.map(insurance => <Insurance insurance={insurance}/>)}
-    </div>    
-  </>;
+  const [insurances, setInsurances] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const getInsurancesRange = async () => {
+    setLoading(true);
+    const resp = await getInsurances();
+    if (resp.success && resp.data.getInsurances) {
+
+      const insurances = resp.data.getInsurances.insurances
+
+      setInsurances(insurances);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    getInsurancesRange();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <>
+      <div className="main_label">Available Insurances</div>
+      {loading && (
+          <div className="centered">
+            <LoadingSpinner />
+          </div>
+        )}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          justifyItems: "center",
+        }}
+      >
+        {!loading &&insurances.map((insurance, index) => (
+          <Insurance key={index} insurance={insurance} />
+        ))}
+      </div>
+    </>
+  );
 };
 
 export default Insurances;

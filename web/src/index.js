@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { BrowserRouter } from "react-router-dom";
+import { UserContextProvider } from "./store/auth-context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,13 +15,15 @@ root.render(
       clientId="5ESOCkuSDGUVQwNSZl6MAZIHnN6qDmhb"
       authorizationParams={{
         // redirect_uri: window.location.origin,
-        redirect_uri:"http://localhost:3005/my-insurances"
+        redirect_uri: "http://localhost:3005/my-insurances",
       }}
       cacheLocation="localstorage"
     >
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <UserContextProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </UserContextProvider>
     </Auth0Provider>
   </React.StrictMode>
 );

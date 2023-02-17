@@ -16,7 +16,7 @@ function App() {
       <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/insurances" element={<Insurances/>}/>
-          <Route path="/insurances-details" element={<InsuranceDetails/>}/>
+          <Route path="/insurances-details/:id" element={<InsuranceDetails/>}/>
           <Route path="/my-insurances" element={<AuthenticationGuard component={MyInsurances}></AuthenticationGuard>}/>
           <Route path="/faq" element={<Faq/>}/>
           <Route path="/terms-and-conditions" element={<TermsAndContidionts/>}/>
