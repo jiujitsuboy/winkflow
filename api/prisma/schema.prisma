@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id                  Int @id @default(autoincrement())
+  name                String @db.VarChar(80)@unique
+  myInsurances        UserInsurances[] @relation(name:"userInsurances-user")
+}
+
+model UserInsurances {
+  id                  Int @id @default(autoincrement())
+  userId              Int
+  insuranceId         Int
+  startDate           DateTime
+  endDate             DateTime
+  insurance           Insurances @relation("userInsurances-insurances", fields:[insuranceId], references: [id])
+  user                Users @relation(name:"userInsurances-user", fields:[userId], references: [id])
+}
+
+model Insurances {
+  id                  Int @id @default(autoincrement())
+  name                String @db.VarChar(80)@unique
+  logo                String @db.VarChar(80)
+  cost                Decimal
+  capacity            String @db.VarChar(80)
+  userInsurance       UserInsurances[] @relation(name:"userInsurances-insurances")
+  chains              InsuranceChains[] @relation("insuranceChains-insurances")
+}
+
+model InsuranceChains {
+  id                  Int @id @default(autoincrement())
+  insuranceId         Int
+  chainId             Int
+  insurance           Insurances @relation("insuranceChains-insurances", fields:[insuranceId], references: [id])
+  chain               Chains @relation(name:"insuranceChains-chains", fields:[chainId], references: [id])
+
+}
+
+model Chains {
+  id                  Int @id @default(autoincrement())
+  name                String @db.VarChar(80)@unique
+  url                 String @db.VarChar(80)
+  insurance           InsuranceChains[] @relation(name:"insuranceChains-chains")
+}
