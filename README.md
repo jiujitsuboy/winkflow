@@ -15,7 +15,20 @@ The project is composed of following features
 
 * **Insurance List Page:** Here we find the list of insurances (coverage) offer to our clients.
 
-![](images/insurances.png)
+![](images/Insurances.png)
+
+* **Insurance Detail Page:** Here were you can see how it will cost the insurance and offers the option of purchase.
+
+![](images/insurace-details.png)
+
+* **Insurance Checkout Page:** Preview of the insurace you are going to pay. Offer you a payment card method.
+
+![](images/payment-checkout.png)
+
+* **Insurance Purchase confirmation Page:** Show the summary of the purchase.
+
+![](images/payment-success1.png)
+![](images/payment-success2.png)
 
 * My current Insurances: This is were the logged user, can see his coverage purchased. *This page required the user to be authenticated.*
 
@@ -47,3 +60,38 @@ Queries
 * getInsurances(pageNum: IntpageSize: Int): InsurancePaginated
 * getChain(id: Int!): Chain
 * getChains(pageNum: IntpageSize: Int): ChainPaginated
+
+## Setup
+This proyect use the following stack:
+
+- React 18
+- Node 18
+- mysql
+- Auth0
+- Stripe API
+
+It is necessary to have a mysql database with the name winkflow
+
+### Auth0
+
+Is required to create an account on [Auth0](https://auth0.com) and create one application (for react) and one API (for node).
+The values of the Auth0 Enviroment variables are taken from this applications created under the Auth0 account.
+
+### Stripe
+Is required to create an account on [Stripe](https://stripe.com/), The values of the Stripe Enviroment variables are taken from this API SDK.
+
+### For frontend is required the following env variables:
+
+- REACT_APP_STRIPE_PUBLIC_KEY= Strype public key
+- REACT_APP_STRIPE_SECRET_KEY= Strype secret key
+- REACT_APP_AUTH0_DOMAIN= Auth0 domain name
+- REACT_APP_AUTH0_CLIENT_ID= Auth0 client ID
+- REACT_APP_AUTH0_AUDIENCE= Auth0 audience
+
+### For backend is required the following env variables:
+
+- DATABASE_URL="mysql://[user]:[password]@[url]/[database_name]"
+- AUTH_DOMAIN= Auth0 domain name
+- AUTH_CLIENT_ID= Auth0 client ID
+- AUTH0_AUDIENCE= Auth0 audience
+- STRIPE_SECRET_KEY = Strype secret key
