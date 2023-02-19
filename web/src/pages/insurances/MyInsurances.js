@@ -39,7 +39,7 @@ const MyInsurances = () => {
       const insurances = resp.data.getUser.myInsurances.map(
         (myInsurance) => myInsurance.insurance
       );
-      // setInsurances(insurances);
+      setInsurances(insurances);
     }
   };
 
