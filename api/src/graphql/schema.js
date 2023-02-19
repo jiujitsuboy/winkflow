@@ -2,6 +2,7 @@ const { buildSchema } = require("graphql");
 const { userType, myInsuranceType, userPaginatedType } = require("./types/user");
 const { insuranceType,  insurancePaginated, insuranceInputData, coverInputData } = require("./types/insurance");
 const { chainType, chainPaginated, chainInputData } = require("./types/chain");
+const { paymentIntent } = require("./types/stripe")
 
 const rootQuery = `
     type RootQuery {
@@ -19,6 +20,7 @@ const rootMutation = `
         createUser(name: String): User!
         createInsurance(insuranceInput: InsuranceInputData!): Insurance!
         createChain(chainInput: ChainInputData!): Chain!
+        createPaymentIntent(coverInput: CoverInputData!): paymentIntent!
         buyCover(coverInput: CoverInputData!): Insurance
     }
 `;
@@ -37,6 +39,8 @@ const graphqlSchema = buildSchema(`
     ${chainType}
     ${chainPaginated}
     ${chainInputData}
+
+    ${paymentIntent}
 
     ${rootQuery}
     ${rootMutation}

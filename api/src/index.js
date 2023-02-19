@@ -2,7 +2,7 @@ const express = require("express");
 const { graphqlHTTP } = require("express-graphql");
 const graphqlSchema = require ("./graphql/schema");
 const graphqlResolver = require ("./graphql/resolvers")
-const authMiddleware = require ("./middleware/auth")
+const authMiddleware = require("./middleware/auth")
 
 const server = express();
 
@@ -21,6 +21,7 @@ server.use((req, res, next) => {
 
 server.use(
     "/graphql",
+    authMiddleware,
     graphqlHTTP({
       schema: graphqlSchema,
       rootValue: graphqlResolver,

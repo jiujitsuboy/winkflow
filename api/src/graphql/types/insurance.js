@@ -34,6 +34,7 @@ const coverInputData = `
             userId: Int!
             startDate: String
             endDate: String
+            amount: Float
         }
 `
 

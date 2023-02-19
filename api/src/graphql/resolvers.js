@@ -1,72 +1,92 @@
-
-const {getUser, getUserByName, createUser} = require("../resolvers/user/users")
-const {getChain, getChains, createChain} = require("../resolvers/chain/chains")
-const {getInsurance, getInsurances, createInsurance, buyCover} = require("../resolvers/insurance/insurances");
+const {
+  getUser,
+  getUserByName,
+  createUser,
+} = require("../resolvers/user/users");
+const {
+  getChain,
+  getChains,
+  createChain,
+} = require("../resolvers/chain/chains");
+const {
+  getInsurance,
+  getInsurances,
+  createInsurance,
+  buyCover,
+} = require("../resolvers/insurance/insurances");
+const { createPaymentIntent } = require("../resolvers/stripe/stripe");
+const {isTokenValid } = require("../utils/validations")
 
 module.exports = {
-    //USER
-    async getUser(args, req) {
-        // await validateAuthenticationWithoutAuthorization(req)
-        const id = args.id;
+  //USER
+  async getUser(args, req) {
+    await isTokenValid(req.token)
 
-        return getUser(id);
-    },
-    async getUserByName(args, req) {
-        // await validateAuthenticationWithoutAuthorization(req)
-        const name = args.name;
+    const id = args.id;    
 
-        return getUserByName(name);
-    },
-    async createUser(args, req) {
-        const name = args.name
+    return getUser(id);
+  },
+  async getUserByName(args, req) {
+    await isTokenValid(req.token)
 
-        return createUser(name)
+    const name = args.name;
 
-    },
-    //CHAIN
-    async getChain(args, req) {
-        // await validateAuthenticationWithoutAuthorization(req)
-        const id = args.id;
+    return getUserByName(name);
+  },
+  async createUser(args, req) {
+    await isTokenValid(req.token)
+    
+    const name = args.name;
 
-        return getChain(id);
-    },
-    async getChains(args, req) {
-        // await validateAuthenticationWithoutAuthorization(req)
-        const pageNum = args.pageNum || 0
-        const pageSize = args.pageSize || 10
+    return createUser(name);
+  },
+  //CHAIN
+  async getChain(args, req) {
+    const id = args.id;
 
-        return getChains(pageNum, pageSize);
-    },
+    return getChain(id);
+  },
+  async getChains(args, req) {
+    const pageNum = args.pageNum || 0;
+    const pageSize = args.pageSize || 10;
 
-    async createChain(args, req) {
-        const chainInput = args.chainInput
+    return getChains(pageNum, pageSize);
+  },
 
-        return createChain(chainInput)
+  async createChain(args, req) {
+    const chainInput = args.chainInput;
 
-    },
-    //INSURANCE
-    async getInsurance(args, req) {
-        // await validateAuthenticationWithoutAuthorization(req)
-        const id = args.id;
+    return createChain(chainInput);
+  },
+  //INSURANCE
+  async getInsurance(args, req) {
+    const id = args.id;
 
-        return getInsurance(id);
-    },
-    async getInsurances(args, req) {
-        // await validateAuthenticationWithoutAuthorization(req)
-        const pageNum = args.pageNum || 0
-        const pageSize = args.pageSize || 10
+    return getInsurance(id);
+  },
+  async getInsurances(args, req) {
+    const pageNum = args.pageNum || 0;
+    const pageSize = args.pageSize || 10;
 
-        return getInsurances(pageNum, pageSize);
-    },
+    return getInsurances(pageNum, pageSize);
+  },
 
-    async createInsurance(args, req) {
-        const insuranceInput = args.insuranceInput
+  async createInsurance(args, req) {
+    const insuranceInput = args.insuranceInput;
 
-        return createInsurance(insuranceInput)
-    },
-    async buyCover(args, req) {
-        const coverInput = args.coverInput
+    return createInsurance(insuranceInput);
+  },
+  async buyCover(args, req) {
+    await isTokenValid(req.token)
+    const coverInput = args.coverInput;
 
-        return buyCover(coverInput)
-    }
-}
+    return buyCover(coverInput);
+  },
+  //Payments
+  async createPaymentIntent(args, req) {
+    // await isTokenValid(req.token)
+    const coverInput = args.coverInput;    
+
+    return createPaymentIntent(coverInput);
+  },
+};
