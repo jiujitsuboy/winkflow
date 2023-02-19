@@ -16,7 +16,6 @@ const isTokenValid = async (token) =>{
 
   if (token) {
     const publicKey = await getKey()
-    console.log(publicKey)
     const decodeToken = jwt.verify(token, publicKey,
       {
         audience: process.env.AUTH0_AUDIENCE,
