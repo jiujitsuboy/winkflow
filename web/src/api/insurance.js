@@ -64,11 +64,11 @@ const getInsurance = (id) => {
   return sendRequest(query, false);
 };
 
-const buyCover = (insuranceId, userId, startDate, endDate) => {
+const buyCover = (insuranceId, userId, startDate, endDate, amount, token) => {
   const query = {
     query: `
             mutation {
-              buyCover(coverInput:{insuranceId:${insuranceId}, userId:${userId}, startDate:"${startDate}", endDate:"${endDate}"}){
+              buyCover(coverInput:{insuranceId:${insuranceId}, userId:${userId}, startDate:"${startDate}", endDate:"${endDate}",amount:${amount}}){
                 id
                 name
                 logo
@@ -87,7 +87,7 @@ const buyCover = (insuranceId, userId, startDate, endDate) => {
             }
           `,
   };
-  return sendRequest(query, false);
+  return sendRequest(query, token);
 };
 
 export { getInsurances, getInsurance, buyCover };

@@ -1,7 +1,5 @@
 import { API_GRAPHQL_URL as url } from "./constants"
 
-const ACCESS_TOKEN = "tokenResponse"
-
 const defaultHeaders = () => {
   return {
     "Content-Type": "application/json",
@@ -9,15 +7,15 @@ const defaultHeaders = () => {
   };
 };
 
-const headersWithAuthorization = () => {
+const headersWithAuthorization = (token) => {
   return {
     ...defaultHeaders(),
-    Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+    Authorization: `Bearer ${token}`,
   };
 };
 
-const sendRequest = (query, withAuthHeaders) => {
-  const headers = withAuthHeaders ? headersWithAuthorization() : defaultHeaders();
+const sendRequest = (query, token) => {
+  const headers = token ? headersWithAuthorization(token) : defaultHeaders();
 
   const options = {
     method: "POST",

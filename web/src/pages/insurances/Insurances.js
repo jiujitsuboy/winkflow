@@ -2,17 +2,19 @@ import React, { useEffect, useState } from "react";
 import Insurance from "../../components/insurance/Insurance";
 import { getInsurances } from "../../api/insurance";
 import LoadingSpinner from "../../components/ui/LoadingSpinner";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Insurances = () => {
   const [insurances, setInsurances] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const { isAuthenticated } = useAuth0();
+
   const getInsurancesRange = async () => {
     setLoading(true);
     const resp = await getInsurances();
     if (resp.success && resp.data.getInsurances) {
-
-      const insurances = resp.data.getInsurances.insurances
+      const insurances = resp.data.getInsurances.insurances;
 
       setInsurances(insurances);
     }
@@ -28,10 +30,10 @@ const Insurances = () => {
     <>
       <div className="main_label">Available Insurances</div>
       {loading && (
-          <div className="centered">
-            <LoadingSpinner />
-          </div>
-        )}
+        <div className="centered">
+          <LoadingSpinner />
+        </div>
+      )}
       <div
         style={{
           display: "grid",
@@ -39,9 +41,10 @@ const Insurances = () => {
           justifyItems: "center",
         }}
       >
-        {!loading &&insurances.map((insurance, index) => (
-          <Insurance key={index} insurance={insurance} />
-        ))}
+        {!loading &&
+          insurances.map((insurance, index) => (
+            <Insurance key={index} insurance={insurance} hideButton={!isAuthenticated} />
+          ))}
       </div>
     </>
   );

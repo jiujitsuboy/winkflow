@@ -1,6 +1,6 @@
 import { sendRequest } from "./apiOperations";
 
-const getUserByName = (name) => {
+const getUserByName = (name, token) => {
   const query = {
     query: `
             query {
@@ -30,10 +30,10 @@ const getUserByName = (name) => {
             }
           `,
   };
-  return sendRequest(query, false);
+  return sendRequest(query, token);
 };
 
-const getUser = (id) => {
+const getUser = (id, token) => {
   const query = {
     query: `
             query {
@@ -63,10 +63,10 @@ const getUser = (id) => {
             }
           `,
   };
-  return sendRequest(query, false);
+  return sendRequest(query, token);
 };
 
-const createUser = (name) => {
+const createUser = (name, token) => {
   const query = {
     query: `
             mutation {
@@ -77,7 +77,7 @@ const createUser = (name) => {
             }
           `,
   };
-  return sendRequest(query, false);
+  return sendRequest(query, token);
 };
 
 export { getUserByName, getUser, createUser };

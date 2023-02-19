@@ -20,8 +20,7 @@ code {
   align-items: center;
 }
 
-.main_label {
-
+.main_label {  
   margin: 3rem auto;
   text-align: center;
   display: flex;

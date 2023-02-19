@@ -16,6 +16,7 @@ root.render(
       authorizationParams={{
         // redirect_uri: window.location.origin,
         redirect_uri: "http://localhost:3005/my-insurances",
+        audience: "http://localhost:4000/graphql",
       }}
       cacheLocation="localstorage"
     >

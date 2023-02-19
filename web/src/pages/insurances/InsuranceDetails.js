@@ -23,13 +23,13 @@ const InsuranceDetails = () => {
   const [insurance, setInsurance] = useState(defaultInsurance);
   const [loading, setLoading] = useState(false);
   const [period, setPeriod] = useState(0);
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(0);  
 
   const isNumber = (value, setValue) => {
-    const conversion = +value;
-    if (!isNaN(conversion)) {
+    const conversion = +value;    
+    if (!isNaN(conversion)) {      
       setValue(conversion);
-    }
+    }    
   };
 
   const getInsuranceById = async (id) => {
@@ -42,8 +42,7 @@ const InsuranceDetails = () => {
     setLoading(false);
   };
 
-  useEffect(() => {
-    console.log("parametro llamado: ", id);
+  useEffect(() => {    
     getInsuranceById(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -107,13 +106,15 @@ const InsuranceDetails = () => {
                         flexDirection: "column",
                       }}
                     >
-                      <div style={{ textAlign: "right" }}>
+                      <div style={{ textAlign:"right"}}>
                         <button
                           style={{
+                            display:"inline-block",
                             color: "#0AB682",
                             fontSize: "1.1rem",
-                            border: "0",
+                            border: "1px solid black",
                             backgroundColor: "transparent",
+                            width:"50px",
                           }}
                           onClick={() => {
                             setPeriod(30);
@@ -123,10 +124,12 @@ const InsuranceDetails = () => {
                         </button>
                         <button
                           style={{
+                            display:"inline-block",
                             color: "#0AB682",
                             fontSize: "1.1rem",
                             border: "0",
                             backgroundColor: "transparent",
+                            width:"50px",
                           }}
                           onClick={() => {
                             setPeriod(90);
@@ -136,10 +139,12 @@ const InsuranceDetails = () => {
                         </button>
                         <button
                           style={{
+                            display:"inline-block",
                             color: "#0AB682",
                             fontSize: "1.1rem",
                             border: "0",
                             backgroundColor: "transparent",
+                            width:"50px",
                           }}
                           onClick={() => {
                             setPeriod(365);
@@ -210,7 +215,9 @@ const InsuranceDetails = () => {
                           <option>ETH</option>
                           <option>DAI</option>
                         </select>
+                        
                       </div>
+                      {amount<5 && <label style={{color:"red"}}>Should be greater than 5</label>}
                     </div>
                   </div>
                 </div>
