@@ -1,6 +1,6 @@
 const calculateCost = (cost, period) => {
     
-  let averageCost = cost
+  let averageCost = +cost
 
   if (period) {
     const rate = period / 365;
