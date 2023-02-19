@@ -1,0 +1,64 @@
+.container {
+    padding: 1.5rem 6rem;
+}
+
+.main_container {
+    padding: 1.5rem;
+}
+
+.main_container__label {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.quotes_container {
+    border: 1px solid #ccc;
+    border-radius: 1.3rem;
+    padding: 1.5rem;
+    margin: 10px;
+}
+
+.quotes_label {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.quotes__inner_label {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.period_container {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 1.3rem;
+    padding: 1.5rem;
+    justify-content: space-between;
+    width: 50%
+}
+
+.period__label_button {
+    display: inline-block;
+    color: #0AB682;
+    font-size: 1.1rem;
+    border: 1px solid black;
+    background-color: transparent;
+    width: 50px;
+    border:0px;
+}
+
+.input__text {
+    border: 0;
+    font-size: 1.1rem;
+    text-align: right;
+    padding-right: 1rem;
+    width: 7rem
+}
+
+.select {
+    border: 0;
+    font-size: 1.1rem;
+}
