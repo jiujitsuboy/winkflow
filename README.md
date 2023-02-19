@@ -42,6 +42,10 @@ The project is composed of following features
 
 ![](images/login.png)
 
+* Stripe dashboard: With your [stripe account](https://dashboard.stripe.com/test/payments), you can see the payments done in the application
+
+![](images/stripe-dashboard.png)
+
 ### Api (Graphql)
 This project use a graphql api to serve all the logic and connection to the persistance layer. [api](http://localhost:4000/graphql) 
 
