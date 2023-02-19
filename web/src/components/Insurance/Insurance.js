@@ -7,40 +7,38 @@ import UserContext from "../../store/auth-context";
 const Insurance = ({ insurance, isBuying, period, amount, hideButton }) => {
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
-  const [disable, setDisable] = useState(false)
+  const [disable, setDisable] = useState(false);
 
   const { id, name, logo, cost, capacity, chains } = insurance;
-  
-  let averageCost = +cost * (amount ? +amount : 1);
+  let averageCost = +cost;
 
   if (period) {
     const rate = period / 365;
     if (rate > 1) {
-      averageCost = cost - (cost * 0.5)
+      averageCost = cost - cost * 0.5;
     } else {
-      averageCost = cost + cost * (1 - rate)
+      averageCost = cost + cost * (1 - rate);
     }
   }
 
-  averageCost = averageCost.toFixed(2)
-
+  averageCost = (averageCost * (amount ? +amount : 1)).toFixed(2);
 
   const getQuoteHandler = () => {
     navigate(`/insurances-details/${id}`);
   };
 
-  const getToPaymentHandler = async() => {
-    setDisable(true)
-    const curruntInsurance = {insurance, period, amount}
-    
-    userContext.storeInsuranceToBuy(curruntInsurance)
+  const getToPaymentHandler = async () => {
+    setDisable(true);
+    const curruntInsurance = { insurance, period, amount, averageCost };
+
+    userContext.storeInsuranceToBuy(curruntInsurance);
     navigate("/checkout-payment");
   };
 
-  useEffect(()=>{
-    setDisable(period<1 || amount<1)
+  useEffect(() => {
+    setDisable(period < 1 || amount < 1);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[period,amount])
+  }, [period, amount]);
 
   return (
     <div className={classes.container}>
@@ -66,22 +64,34 @@ const Insurance = ({ insurance, isBuying, period, amount, hideButton }) => {
       </div>
       <div className={classes.features}>
         <label>Yearly cost:</label>
-        <label>{averageCost}</label>
+        <label>{cost}%</label>
       </div>
+      {isBuying && (
+        <div className={classes.features}>
+          <label>Your pay:</label>
+          <label>{averageCost}</label>
+        </div>
+      )}
       <div className={classes.features}>
         <label>Capacity</label>
         <label>{capacity}</label>
       </div>
       <div className={classes.button_container}>
-        {!hideButton ? isBuying ? (
-          <button className={classes.button} onClick={getToPaymentHandler} disabled={disable}>
-            Purchase
-          </button>
-        ) : (
-          <button className={classes.button} onClick={getQuoteHandler}>
-            Get quote
-          </button>
-        ):null}
+        {!hideButton ? (
+          isBuying ? (
+            <button
+              className={classes.button}
+              onClick={getToPaymentHandler}
+              disabled={disable}
+            >
+              Purchase
+            </button>
+          ) : (
+            <button className={classes.button} onClick={getQuoteHandler}>
+              Get quote
+            </button>
+          )
+        ) : null}
       </div>
     </div>
   );

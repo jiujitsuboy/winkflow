@@ -34,6 +34,14 @@
     font-weight: bold;
 }
 
+.features {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-end;
+    margin-top: 1rem; 
+    font-weight: bold;    
+}
+
 .features_logo {
     width: 20px
 }

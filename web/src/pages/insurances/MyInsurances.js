@@ -17,7 +17,6 @@ const MyInsurances = () => {
     let userId;
     // const token = await getAccessTokenSilently()
     const token = await userContext.getUserToken();
-    console.log("token: ", token);
     const resp = await getUserByName(name, token);
 
     if (resp.success && resp.data.getUserByName) {

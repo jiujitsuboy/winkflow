@@ -50,8 +50,7 @@ const CheckoutForm = () => {
       if (
         responseCreatePaymentIntent.success &&
         responseCreatePaymentIntent.data.createPaymentIntent
-      ) {
-        console.log("paymentintet: ", responseCreatePaymentIntent.data.createPaymentIntent.clientSecret)
+      ) {        
         setClientSecret(
           responseCreatePaymentIntent.data.createPaymentIntent.clientSecret
         );
@@ -134,7 +133,7 @@ const CheckoutForm = () => {
           <article>
             <p>
               <b>Your total price is: </b>
-              {insurance.amount}
+              {insurance.averageCost}
             </p>
             <p>
               <b>Test Card Number:</b> 4242 4242 4242 4242
@@ -178,9 +177,6 @@ const CheckoutForm = () => {
 };
 
 const StripeCheckout = () => {
-  const userContext = useContext(UserContext);
-  const insurance = userContext.insurance;
-  console.log("insurance: ", insurance);
   return (
     <div className="centered" style={{height:"50vh"}}>
       <Elements stripe={promise}>
