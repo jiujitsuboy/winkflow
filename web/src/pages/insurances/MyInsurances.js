@@ -24,9 +24,10 @@ const MyInsurances = () => {
       userContext.storeUserId(userId);
       getUserById(userId, token);
     } else {
-      const resp = await createUser(name);
+      const resp = await createUser(name, token);
       if (resp.success && resp.data.createUser) {
-        userId = resp.data.createUser;
+        userId = resp.data.createUser.id;
+        userContext.storeUserId(userId);
       }
     }
     setLoading(false);

@@ -8,7 +8,7 @@ const MainNavigation = () => {
   const { isAuthenticated, loginWithRedirect, user, logout, isLoading } = useAuth0();
   
   return (
-    <header className={classes.header} style={{minWidth:"1280px"}}>
+    <header className={classes.header}>
       <div className={classes.logo}>
         <Link to="/">My Insurances</Link>
       </div>
